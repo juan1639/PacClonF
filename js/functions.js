@@ -24,6 +24,7 @@ function dibujarFantasmas() {
                 estadoFantasmas.azules = false;
                 estadoFantasmas.ptosComeFantasmas = 100;
                 marcadores.vidas --;
+                marcadores.scoreVidas.innerHTML = `x ${marcadores.vidas}`;
 
                 if (marcadores.vidas >= 0) {
                     setTimeout(() => {
@@ -39,6 +40,8 @@ function dibujarFantasmas() {
                 } else {
                     estado.actual = 4;  // Game Over
                     estado.gameover = true;
+                    marcadores.vidas = 0;
+                    marcadores.scoreVidas.innerHTML = `x ${marcadores.vidas}`;
                 }
 
             } else {
@@ -148,6 +151,7 @@ function elNivelSuperado() {
     if (!estado.nivel_superado) return;
 
     marcadores.nivel ++;
+    marcadores.scoreNivel.innerHTML = `Nivel: ${marcadores.nivel}`;
     estadoFantasmas.ptosComeFruta *= 2;
     objeto.fruta.comido = false;
     estadoFantasmas.duracionAzules -= marcadores.nivel * 1000;
@@ -197,18 +201,7 @@ function elGameOver() {
 
 // ------------------------------------------------------------------------
 function mostrarMarcadores() {
-    ctx.font = '30px seriff';
-    ctx.fillStyle = 'yellow';
-    ctx.fillText('Puntos: ' + marcadores.puntos.toString(), 42, 24);
-
-    ctx.fillStyle = 'yellow';
-    ctx.fillText('Nivel: ' + marcadores.nivel.toString(), 242, 24);
-
-    ctx.fillStyle = 'yellow';
-    let mv = marcadores.vidas;
-
-    if (mv < 0) mv = 0;
-    ctx.fillText('Vidas: ' + mv.toString(), 402, 24);
+    marcadores.scorePtos.innerHTML = `Puntos: ${marcadores.puntos}`;
 
     if (estado.actual == 0) {
         // ctx.fillStyle = sueloColor;
@@ -230,14 +223,14 @@ function mostrarMarcadores() {
     objeto.fantasma.forEach(fant => {
         if (fant.showPtos) {
             ctx.font = '30px seriff';
-            ctx.fillStyle = 'white';
+            ctx.fillStyle = 'orangered';
             ctx.fillText(fant.showx2, fant.showX, fant.showY);
         }
     });
 
     if (objeto.fruta.showPtos) {
         ctx.font = '32px seriff';
-        ctx.fillStyle = 'lightgreen';
+        ctx.fillStyle = 'orangered';
         ctx.fillText(estadoFantasmas.ptosComeFruta, objeto.fruta.showX, objeto.fruta.showY);
     }
 }

@@ -12,7 +12,8 @@ import {
 // ------------------------------------------------------------------------
 function canvasPacMan(x, y, r, pacColor) {
     let corr = 2;
-    const gradi = ctx.createRadialGradient(x + r, y + r, 8, x + r, y + r, r);
+
+    const gradi = ctx.createRadialGradient(x + r, y + r, 10, x + r, y + r, r);
     gradi.addColorStop(0, '#FA1');
     gradi.addColorStop(1, '#FE1');
 
@@ -109,13 +110,7 @@ function canvasFantasma(x, y, r, fantasmaColor, comido) {
     let corr = 2;
     let v = 15;
 
-    const colorUno = fantasmaColor[0];
-    const colorDos = fantasmaColor[1];
-
-    const gradi = ctx.createRadialGradient(x + r, y + r, 11, x + r, y + r, r);
-    gradi.addColorStop(0, colorUno);
-    gradi.addColorStop(1, colorDos);
-    fantasmaColor = gradi;
+    fantasmaColor = fantasmaColor[0];
 
     if (estadoFantasmas.azules) fantasmaColor = 'royalblue';
 
@@ -174,6 +169,11 @@ function canvasFruta(x, y, r) {
     let corr = 2;
     let radCerezas = 11;
 
+    const gradi = ctx.createRadialGradient(x + r + corr - 6, y + r + corr + 4, 3, x + r + corr - 6, 
+        y + r + corr + 4, r);
+    gradi.addColorStop(0, colores.rojo);
+    gradi.addColorStop(1, '#F52');
+
     ctx.beginPath();
     ctx.moveTo(x + r + corr - 6, y + r + corr + 4);
     ctx.lineTo(x + r, y);
@@ -183,14 +183,14 @@ function canvasFruta(x, y, r) {
     ctx.closePath();
 
     ctx.beginPath();
-    ctx.arc(x + r + corr - 6, y + r + corr + 4, radCerezas, 0, Math.PI * 2);
+    ctx.arc(x + r + corr + 3, y + r + corr + 4, radCerezas, 0, Math.PI * 2);
     ctx.fillStyle = colores.rojo;
     ctx.fill();
     ctx.closePath();
 
     ctx.beginPath();
-    ctx.arc(x + r + corr + 3, y + r + corr + 4, radCerezas, 0, Math.PI * 2);
-    ctx.fillStyle = colores.rojo;
+    ctx.arc(x + r + corr - 6, y + r + corr + 4, radCerezas, 0, Math.PI * 2);
+    ctx.fillStyle = gradi;
     ctx.fill();
     ctx.closePath();
 

@@ -11,13 +11,75 @@ html, body {
 
 body {
 	background-color: #8F7F00;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+}
+
+.contenedor__main {
+	width: fit-content;
+	height: inherit;
+	background-color: inherit;
+	display: block;
+}
+
+.contenedor__scores {
+	border: solid black;
+	border-width: 2px 2px 0 2px;
+	border-radius: 7px 7px 0 0;
+	font-size: 24px;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px #BBB;
+	color: yellow;
+	background-color: #333;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.score {
+	width: 48%;
+	height: fit-content;
+	padding: 4px 10px 4px 10px;
+	font-size: inherit;
+	font-weight: inherit;
+	color: inherit;
+	text-align: center;
+}
+
+.nivel {
+	color: lightgreen;
+}
+
+.pacVidas {
+	width: 28px;
+	height: 25px;
+	border-radius: 50%;
+	background-color: yellow;
+}
+
+.bocaPacVidas {
+	box-sizing: content-box;
+	border-width: 12px;
+	border-style: solid;
+	border-color: transparent #333 transparent transparent;
+	width: 1px;
+	height: 1px;
+	background-color: transparent;
+}
+
+.vidas {
+	width: 20%;
+	height: fit-content;
+	padding-left: 12px;
+	color: white;
 }
 
 #canvas {
 	border: 2px solid black;
 }
 
-button {
+.boton {
 	width: 320px;
 	height: 45px;
 	border-radius: 0.15em;
@@ -31,7 +93,7 @@ button {
 	position: relative;
 }
 
-button:active {
+.boton:active {
 	top: 0.1em;
 }
 

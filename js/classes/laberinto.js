@@ -36,8 +36,8 @@ export class Level {
             for (let x = 0; x < this.anchoM; x ++){
                 
                 if (this.array[y][x] == 9) {
-                    let bx = x * this.anchoT + 1;
-                    let by = y * this.altoT + 1;
+                    let bx = x * this.anchoT + 0;
+                    let by = y * this.altoT + 0;
 
                     ctx.fillStyle = colores.paredColor;
                     ctx.fillRect(bx, by, this.anchoT - 1, this.altoT - 1);

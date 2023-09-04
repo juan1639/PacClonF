@@ -56,7 +56,10 @@ const objeto = {
 const marcadores = {
     puntos: 0,
     nivel: 1,
-    vidas: 3
+    vidas: 3,
+    scorePtos: document.getElementById('puntos'),
+    scoreNivel: document.getElementById('nivel'),
+    scoreVidas: document.getElementById('xvidas')
 }
 
 const estado = {
