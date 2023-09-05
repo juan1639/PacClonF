@@ -88,6 +88,8 @@ document.addEventListener('keydown', function(tecla) {
             if (estado.actual == -1) {
                 estado.actual = 0;
                 objeto.pacman.valoresIniciales();
+                marcadores.contenedorScores.style.display = 'flex';
+                marcadores.contenedorNewGame.style.display = 'none';
 
                 setTimeout(() => {
                     if (estado.actual == 0) estado.actual = 1;
@@ -102,7 +104,18 @@ document.addEventListener('keydown', function(tecla) {
 // ----------------------------------------------------------------------------
 document.addEventListener('click', function(event) {
 
-    if (event.target.id == 'NewGame') nuevaPartida();
+    if (event.target.id == 'newGame') {
+        if (estado.actual == -1) {
+            estado.actual = 0;
+            objeto.pacman.valoresIniciales();
+            marcadores.contenedorScores.style.display = 'flex';
+            marcadores.contenedorNewGame.style.display = 'none';
+
+            setTimeout(() => {
+                if (estado.actual == 0) estado.actual = 1;
+            }, 5000);
+        }
+    }
 
     if (event.target.id == 'le') {
         objeto.pacman.izquierda();

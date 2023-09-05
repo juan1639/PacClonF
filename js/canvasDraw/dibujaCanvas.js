@@ -112,7 +112,13 @@ function canvasFantasma(x, y, r, fantasmaColor, comido) {
 
     fantasmaColor = fantasmaColor[0];
 
-    if (estadoFantasmas.azules) fantasmaColor = 'royalblue';
+    if (estadoFantasmas.azules && !estadoFantasmas.intermitentes) {
+        fantasmaColor = 'royalblue';
+    } else if (estadoFantasmas.azules && !objeto.animaPacMan && estadoFantasmas.intermitentes) {
+        fantasmaColor = 'lightblue';
+    } else if (estadoFantasmas.azules && objeto.animaPacMan && estadoFantasmas.intermitentes) {
+        fantasmaColor = 'royalblue';
+    }
 
     if (estado.actual == -1 && objeto.pacman.velX > 0) fantasmaColor = 'royalblue';
 

@@ -59,7 +59,9 @@ const marcadores = {
     vidas: 3,
     scorePtos: document.getElementById('puntos'),
     scoreNivel: document.getElementById('nivel'),
-    scoreVidas: document.getElementById('xvidas')
+    scoreVidas: document.getElementById('xvidas'),
+    contenedorScores: document.getElementById('contenedor2__scores'),
+    contenedorNewGame: document.getElementById('contenedor2__newGame')
 }
 
 const estado = {
@@ -70,6 +72,7 @@ const estado = {
 
 const estadoFantasmas = {
     azules: false,
+    intermitentes: false,
     duracionAzules: 8000,
     ptosComeFantasmas: 100,
     ptosComeFruta: 200

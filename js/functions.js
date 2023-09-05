@@ -94,6 +94,7 @@ function dibujaTodosPuntitos() {
 
                     setTimeout(() => {
                         estadoFantasmas.azules = false;
+                        estadoFantasmas.intermitentes = false;
                         estadoFantasmas.ptosComeFantasmas = 100;
 
                         objeto.fantasma.forEach(fant => {
@@ -101,6 +102,10 @@ function dibujaTodosPuntitos() {
                         });
 
                     }, estadoFantasmas.duracionAzules);
+
+                    setTimeout(() => {
+                        estadoFantasmas.intermitentes = true;
+                    }, Math.floor(estadoFantasmas.duracionAzules / 1.6));
                 }
 
                 objeto.ptoGordo[i].dibuja();
@@ -123,6 +128,13 @@ function checkComerFruta() {
 
         setTimeout(() => {
             objeto.fruta.showPtos = false;
+
+            setTimeout(() => {
+                objeto.fruta.comido = false
+                objeto.fruta.x = 9 * constante.bsx;
+                objeto.fruta.y = 11 * constante.bsy;
+            }, 9000);
+
         }, 3000);
     }
 }
@@ -189,8 +201,13 @@ function nuevaPartida() {
 function elGameOver() {
     if (!estado.gameover) return;
 
+    const gradi = ctx.createLinearGradient(parseInt(resolucion[0] / 5) + 5, 
+        parseInt(resolucion[1] / 4), parseInt(resolucion[0] / 5) + 5, parseInt(resolucion[1] / 1.5));
+    gradi.addColorStop(0, 'orangered');
+    gradi.addColorStop(1, 'yellow');
+
     ctx.font = '100px seriff';
-    ctx.fillStyle = 'yellow';
+    ctx.fillStyle = gradi;
     ctx.fillText('Game Over', parseInt(resolucion[0] / 5) + 5, 
         parseInt(resolucion[1] / 2));
 
@@ -207,8 +224,13 @@ function mostrarMarcadores() {
         // ctx.fillStyle = sueloColor;
         // ctx.fillRect(20, resolucion[1] / 2 - 40, resolucion[0] - 40, 55);
 
+        const gradi = ctx.createLinearGradient(parseInt(resolucion[0] / 5) + 5, 
+            parseInt(resolucion[1] / 4), parseInt(resolucion[0] / 5) + 5, parseInt(resolucion[1] / 1.5));
+        gradi.addColorStop(0, 'orangered');
+        gradi.addColorStop(1, 'yellow');
+
         ctx.font = '100px seriff';
-        ctx.fillStyle = 'yellow';
+        ctx.fillStyle = gradi;
         ctx.fillText('Preparado!', parseInt(resolucion[0] / 5) + 5, 
             parseInt(resolucion[1] / 2));
     }

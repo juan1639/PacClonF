@@ -1,4 +1,4 @@
-import {constante, estado} from '../constants.js';
+import {constante, estado, objeto} from '../constants.js';
 
 import {canvasFruta} from '../canvasDraw/dibujaCanvas.js';
 
@@ -73,12 +73,12 @@ export class Fruta {
         x = parseInt((this.x + this.velX + this.ancho * this.sumarAncho) / constante.bsx);
         y = parseInt((this.y + this.velY + this.alto * this.sumarAlto) / constante.bsy);
 
-        if (!(laberinto.colision(x, y))) {
+        if (!(objeto.laberinto.colision(x, y))) {
             this.x += this.velX * 2;
             this.y += this.velY * 2;
 
-            if (this.x > NRO_COLUMNAS * constante.bsx && this.velX > 0) this.x = -constante.bsx;
-            if (this.x < -constante.bsx && this.velX < 0) this.x = NRO_COLUMNAS * constante.bsx;
+            if (this.x > constante.nro_columnas * constante.bsx && this.velX > 0) this.x = -constante.bsx;
+            if (this.x < -constante.bsx && this.velX < 0) this.x = constante.nro_columnas * constante.bsx;
 
         } else {
             this.elegir_otra_direccion();
@@ -87,7 +87,7 @@ export class Fruta {
     }
 
     dibuja() {
-        if (estado.ctual == 1)  this.actualiza();
+        if (estado.actual == 1)  this.actualiza();
 
         if (!this.comido) canvasFruta(this.x, this.y, this.radio);
     }
