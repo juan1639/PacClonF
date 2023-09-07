@@ -61,7 +61,7 @@ const marcadores = {
     scoreNivel: document.getElementById('nivel'),
     scoreVidas: document.getElementById('xvidas'),
     contenedorScores: document.getElementById('contenedor2__scores'),
-    contenedorNewGame: document.getElementById('contenedor2__newGame')
+    contenedorControles: document.getElementById('contenedor2__botonesControl')
 }
 
 const estado = {

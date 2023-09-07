@@ -34,22 +34,20 @@ body {
 	background-color: #333;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: space-around;
 }
 
 .scores {
+	display: flex;
+}
+
+.botonesControl {
 	display: none;
 }
 
-.newGame {
-	display: flex;
-	justify-content: center;
-}
-
-.score {
-	width: 48%;
+.score .nivel {
+	width: fit-content;
 	height: fit-content;
-	padding: 4px 10px 4px 10px;
 	font-size: inherit;
 	font-weight: inherit;
 	color: inherit;
@@ -61,7 +59,7 @@ body {
 }
 
 .pacVidas {
-	width: 28px;
+	width: 25px;
 	height: 25px;
 	border-radius: 50%;
 	background-color: yellow;
@@ -78,7 +76,7 @@ body {
 }
 
 .vidas {
-	width: 20%;
+	width: fit-content;
 	height: fit-content;
 	padding-left: 12px;
 	color: white;
@@ -89,42 +87,51 @@ body {
 }
 
 .boton {
-	width: 320px;
-	height: 40px;
-	border-radius: 0.15em;
+	width: fit-content;
+	height: fit-content;
+	border-radius: 7px;
 	font-size: 24px;
 	font-weight: 700;
-	color: #FFFFEE; 
-	background-color: #FF3010;
-	box-shadow: inset 0 -0.5em 0 -0.35em rgba(0, 0, 0, 0.25);
-	text-shadow: 2px 1px 1px black;
 	text-align: center;
 	cursor: pointer;
-	position: relative;
+	padding: 5px 25px 7px 25px;
+	outline: none;
 }
 
 .boton:active {
-	top: 0.1em;
+	transform: translate(4px, 4px);
 }
 
-.botonControles {
-	width: 104px;
-	height: 50px;
-	border-radius: 0.15em;
-	font-size: 24px;
-	font-weight: 700;
-	color: #101010;
-	background-color: #909090;
-	box-shadow: inset 0 -0.5em 0 -0.35em rgba(0, 0, 0, 0.17);
-	text-align: center;
-	cursor: pointer;
-	position: relative;
+.NewGame {
+	color: #FFFFA5; 
+	background-color: #FF3010;
+	text-shadow: 2px 2px 2px black;
+	box-shadow: inset 0 -0.5em 0 -0.35em rgba(0, 0, 0, 0.45);
 }
 
-.botonControles:active {
-	top: 0.1em;
+.controles {
+	
 }
 
+@media screen and (max-width: 750px) {
+	#canvas {
+		width: 350px;
+		height: 320px;
+	}
 
+	.contenedor__main {
+		width: 350px;
+	}
+
+	.contenedor2 {
+		font-size: 16px;
+	}
+
+	.boton {
+		width: 90px;
+		font-size: 14px;
+		padding: 4px;
+	}
+}
 
 

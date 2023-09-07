@@ -85,11 +85,9 @@ document.addEventListener('keydown', function(tecla) {
         break;
 
         case 13:
-            if (estado.actual == -1) {
+            if (estado.actual == -1 || estado.gameover) {
                 estado.actual = 0;
                 objeto.pacman.valoresIniciales();
-                marcadores.contenedorScores.style.display = 'flex';
-                marcadores.contenedorNewGame.style.display = 'none';
 
                 setTimeout(() => {
                     if (estado.actual == 0) estado.actual = 1;
@@ -104,12 +102,10 @@ document.addEventListener('keydown', function(tecla) {
 // ----------------------------------------------------------------------------
 document.addEventListener('click', function(event) {
 
-    if (event.target.id == 'newGame') {
-        if (estado.actual == -1) {
+    if (event.target.id == 'boton__newGame') {
+        if (estado.actual == -1 || estado.gameover) {
             estado.actual = 0;
             objeto.pacman.valoresIniciales();
-            marcadores.contenedorScores.style.display = 'flex';
-            marcadores.contenedorNewGame.style.display = 'none';
 
             setTimeout(() => {
                 if (estado.actual == 0) estado.actual = 1;
@@ -134,7 +130,7 @@ document.addEventListener('click', function(event) {
 // ================================================================================
 window.onload = () => {
     canvas.width = resolucion[0];
-    canvas.height = resolucion[1];
+    canvas.height = resolucion[1] - constante.bsy;
 
     // INSTANCIAR (Laberinto) ----------------------------------------
     objeto.laberinto = new Level(array_laberinto);

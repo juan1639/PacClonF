@@ -210,10 +210,6 @@ function elGameOver() {
     ctx.fillStyle = gradi;
     ctx.fillText('Game Over', parseInt(resolucion[0] / 5) + 5, 
         parseInt(resolucion[1] / 2));
-
-    ctx.font = '40px seriff';
-    ctx.fillStyle = 'orangered';
-    ctx.fillText('Recargue el navegador para jugar otra vez...', 40, resolucion[1] - 50);
 }
 
 // ------------------------------------------------------------------------
@@ -281,8 +277,8 @@ function laPresentacion(animaPacMan) {
 
     ctx.font = '30px seriff';
     ctx.fillStyle = 'white';
-    ctx.fillText('Pulse INTRO para comenzar...', parseInt(resolucion[0] / 4) + 5, 
-        resolucion[1] - 50);
+    ctx.fillText('Pulse INTRO o Nueva Partida para comenzar...', parseInt(resolucion[0] / 9) + 5, 
+        resolucion[1] - constante.bsy * 2);
 
     objeto.pacman.secuenciaPresentacion(animaPacMan);
     objeto.fantasma[1].secuenciaPresentacion();
