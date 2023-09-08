@@ -7,7 +7,8 @@ const constante = {
     nro_filas: 15,
     nro_columnas: 19,
     nro_fantasmas: 4,
-    fps: 60
+    fps: 60,
+    pausa_preparado: 5000
 }
 
 const resolucion = [
@@ -59,7 +60,7 @@ const marcadores = {
     vidas: 3,
     scorePtos: document.getElementById('puntos'),
     scoreNivel: document.getElementById('nivel'),
-    scoreVidas: document.getElementById('xvidas'),
+    scoreVidas: document.getElementById('vidas'),
     contenedorScores: document.getElementById('contenedor2__scores'),
     contenedorControles: document.getElementById('contenedor2__botonesControl')
 }

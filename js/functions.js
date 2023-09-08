@@ -24,7 +24,7 @@ function dibujarFantasmas() {
                 estadoFantasmas.azules = false;
                 estadoFantasmas.ptosComeFantasmas = 100;
                 marcadores.vidas --;
-                marcadores.scoreVidas.innerHTML = `x ${marcadores.vidas}`;
+                marcadores.scoreVidas.innerHTML = `Vidas: ${marcadores.vidas}`;
 
                 if (marcadores.vidas >= 0) {
                     setTimeout(() => {
@@ -193,8 +193,41 @@ function elNivelSuperado() {
 }
 
 // -------------------------------------------------------------------------
-function nuevaPartida() {
+function nuevaPartidaLocationReload() {
     if (estado.gameover || estado.actual == 0) location.reload();
+}
+
+function nuevaPartida() {
+    estado.actual = 0;
+    estado.gameover = false;
+
+    marcadores.puntos = 0;
+    marcadores.scorePtos.innerHTML = `Puntos: ${marcadores.puntos}`;
+    marcadores.nivel = 1;
+    marcadores.scoreNivel.innerHTML = `Nivel: ${marcadores.nivel}`;
+    marcadores.vidas = 3;
+    marcadores.scoreVidas.innerHTML = `Vidas: ${marcadores.vidas}`;
+
+    estadoFantasmas.ptosComeFruta = 200;
+    objeto.fruta.comido = false;
+    estadoFantasmas.duracionAzules = 8000;
+    estado.nivel_superado = false;
+    objeto.contPuntitosComidos = 0;
+
+    objeto.puntito.forEach(punto => {
+        punto.visible = true;
+    });
+
+    objeto.ptoGordo.forEach(gordo => {
+        gordo.visible = true;
+    });
+
+    objeto.pacman.revivirPacMan();
+
+    objeto.fantasma[0].revivirFantasmas(3, 8, 0, 0);
+    objeto.fantasma[1].revivirFantasmas(5, 8, 1, 0);
+    objeto.fantasma[2].revivirFantasmas(9, 8, 2, 1);
+    objeto.fantasma[3].revivirFantasmas(11, 8, 3, 1);
 }
 
 // -------------------------------------------------------------------------
@@ -217,8 +250,6 @@ function mostrarMarcadores() {
     marcadores.scorePtos.innerHTML = `Puntos: ${marcadores.puntos}`;
 
     if (estado.actual == 0) {
-        // ctx.fillStyle = sueloColor;
-        // ctx.fillRect(20, resolucion[1] / 2 - 40, resolucion[0] - 40, 55);
 
         const gradi = ctx.createLinearGradient(parseInt(resolucion[0] / 5) + 5, 
             parseInt(resolucion[1] / 4), parseInt(resolucion[0] / 5) + 5, parseInt(resolucion[1] / 1.5));
@@ -234,7 +265,7 @@ function mostrarMarcadores() {
     if (estado.actual == 3) {
         ctx.font = '100px seriff';
         ctx.fillStyle = 'yellow';
-        ctx.fillText('Nivel Superado!', parseInt(resolucion[0] / 8) + 5, 
+        ctx.fillText('Nivel Superado!', parseInt(resolucion[0] / 9) + 5, 
             parseInt(resolucion[1] / 2));
     }
 
@@ -289,6 +320,7 @@ export {
 	checkComerFruta, checkColision,
 	comprobarNivelSuperado, elNivelSuperado,
 	nuevaPartida, elGameOver, mostrarMarcadores,
-	reescalaCanvas, borraCanvas, laPresentacion
+	reescalaCanvas, borraCanvas, laPresentacion,
+    nuevaPartidaLocationReload
 };
 

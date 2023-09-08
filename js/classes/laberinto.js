@@ -40,9 +40,9 @@ export class Level {
                     let by = y * this.altoT + 0;
 
                     ctx.fillStyle = colores.paredColor;
-                    ctx.fillRect(bx, by, this.anchoT - 1, this.altoT - 1);
+                    ctx.fillRect(bx, by, this.anchoT - 2, this.altoT - 2);
                     ctx.fillStyle = colores.paredColorOscuro;
-                    ctx.fillRect(bx + 2, by + 2, this.anchoT - 4, this.altoT - 4);
+                    ctx.fillRect(bx + 2, by + 2, this.anchoT - 3, this.altoT - 3);
                     // ctx.drawImage(this.img, 0, 0, this.img.width - 1, this.img.height - 1, 
                     //     x * this.anchoT, y * this.altoT, this.anchoT, this.altoT);
                 }         

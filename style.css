@@ -31,7 +31,7 @@ body {
 	font-weight: bold;
 	text-shadow: 1px 1px 1px #BBB;
 	color: yellow;
-	background-color: #333;
+	background: linear-gradient(#777, #222);
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
@@ -43,9 +43,12 @@ body {
 
 .botonesControl {
 	display: none;
+	border-radius: 5px;
+	border: none;
+	background: none;
 }
 
-.score .nivel {
+.score .nivel .vidas {
 	width: fit-content;
 	height: fit-content;
 	font-size: inherit;
@@ -58,28 +61,8 @@ body {
 	color: lightgreen;
 }
 
-.pacVidas {
-	width: 25px;
-	height: 25px;
-	border-radius: 50%;
-	background-color: yellow;
-}
-
-.bocaPacVidas {
-	box-sizing: content-box;
-	border-width: 12px;
-	border-style: solid;
-	border-color: transparent #333 transparent transparent;
-	width: 1px;
-	height: 1px;
-	background-color: transparent;
-}
-
 .vidas {
-	width: fit-content;
-	height: fit-content;
-	padding-left: 12px;
-	color: white;
+	color: lightblue;
 }
 
 #canvas {
@@ -110,7 +93,56 @@ body {
 }
 
 .controles {
-	
+	height: 50px;
+	color: black;
+	border-radius: 6px;
+	background: linear-gradient(#CCC, #777);
+	font-size: 30px;
+	font-weight: bold;
+	box-shadow: inset -3px -2px 2px rgba(0, 0, 0, 0.7);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	outline: none;
+}
+
+.controles:active {
+	transform: translate(-2px, -4px);
+}
+
+#boton__up, #boton__do {
+	width: 100%;
+}
+
+#boton__le, #boton__ri {
+	width: 50%;
+	height: 60px;
+}
+
+.flecha__direccion {
+	box-sizing: content-box;
+	width: 1px;
+	height: 1px;
+	border: 20px solid;
+}
+
+.arriba {
+	border-color: transparent transparent black transparent;
+	margin: 0 0 7% 0;
+}
+
+.izquierda {
+	border-color: transparent black transparent transparent;
+}
+
+.derecha {
+	border-color: transparent transparent transparent black;
+}
+
+.abajo {
+	border-color: black transparent transparent transparent;
+	margin: 7% 0 0 0;
 }
 
 @media screen and (max-width: 750px) {
@@ -131,6 +163,14 @@ body {
 		width: 90px;
 		font-size: 14px;
 		padding: 4px;
+	}
+
+	.botonesControl {
+		width: 100%;
+		height: fit-content;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 }
 

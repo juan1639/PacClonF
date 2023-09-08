@@ -37,7 +37,8 @@ import {
     mostrarMarcadores,
     reescalaCanvas, 
     borraCanvas, 
-    laPresentacion
+    laPresentacion,
+    nuevaPartidaLocationReload
 } from './functions.js';
 
 // ----------------------------------------------------------------------------
@@ -85,13 +86,20 @@ document.addEventListener('keydown', function(tecla) {
         break;
 
         case 13:
-            if (estado.actual == -1 || estado.gameover) {
+            if (estado.actual == -1) {
                 estado.actual = 0;
                 objeto.pacman.valoresIniciales();
 
                 setTimeout(() => {
                     if (estado.actual == 0) estado.actual = 1;
-                }, 5000);
+                }, constante.pausa_preparado);
+
+            } else if (estado.gameover) {
+                nuevaPartida();
+
+                setTimeout(() => {
+                    estado.actual = 1;
+                }, constante.pausa_preparado);
             }
         break;
     }
@@ -103,13 +111,20 @@ document.addEventListener('keydown', function(tecla) {
 document.addEventListener('click', function(event) {
 
     if (event.target.id == 'boton__newGame') {
-        if (estado.actual == -1 || estado.gameover) {
+        if (estado.actual == -1) {
             estado.actual = 0;
             objeto.pacman.valoresIniciales();
 
             setTimeout(() => {
                 if (estado.actual == 0) estado.actual = 1;
-            }, 5000);
+            }, constante.pausa_preparado);
+
+        } else if (estado.gameover) {
+            nuevaPartida();
+
+            setTimeout(() => {
+                estado.actual = 1;
+            }, constante.pausa_preparado);
         }
     }
 

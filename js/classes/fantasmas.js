@@ -22,7 +22,7 @@ export class Fantasma {
 
         this.ancho = constante.bsx;
         this.alto = constante.bsy;
-        this.radio = parseInt(constante.bsx / 2);
+        this.radio = Math.floor(constante.bsy / 2.2);
 
         this.listaColores = [
             ['pink', '#E7C'],
