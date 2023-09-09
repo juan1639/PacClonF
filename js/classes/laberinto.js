@@ -98,11 +98,15 @@ export class PtosGordos {
         this.radio += 0.4;
         if (this.radio >= 15.0) this.radio = 4.0;
 
+        ctx.save();
         ctx.beginPath();
+        ctx.shadowColor = this.color;
+        ctx.shadowBlur = 20;
         ctx.arc(this.x , this.y , Math.floor(this.radio), 0, Math.PI * 2);
         ctx.fillStyle = this.color;
         ctx.fill();
         ctx.closePath();
+        ctx.restore();
     }
 }
 

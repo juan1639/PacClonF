@@ -184,6 +184,7 @@ function elNivelSuperado() {
     estado.nivel_superado = false;
     objeto.contPuntitosComidos = 0;
     estado.actual = 3;
+    sonidos.presentacion.play();
 
     if (estadoFantasmas.duracionAzules < 2000) estadoFantasmas.duracionAzules = 2000;
 
@@ -283,16 +284,24 @@ function mostrarMarcadores() {
 
     objeto.fantasma.forEach(fant => {
         if (fant.showPtos) {
+            ctx.save();
+            ctx.shadowColor = 'orange';
+            ctx.shadowBlur = 10;
             ctx.font = '30px seriff';
             ctx.fillStyle = 'orangered';
             ctx.fillText(fant.showx2, fant.showX, fant.showY);
+            ctx.restore();
         }
     });
 
     if (objeto.fruta.showPtos) {
+        ctx.save();
+        ctx.shadowColor = 'orange';
+        ctx.shadowBlur = 10;
         ctx.font = '32px seriff';
         ctx.fillStyle = 'orangered';
         ctx.fillText(estadoFantasmas.ptosComeFruta, objeto.fruta.showX, objeto.fruta.showY);
+        ctx.restore();
     }
 }
 
