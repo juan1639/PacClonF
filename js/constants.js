@@ -61,7 +61,7 @@ const marcadores = {
     scorePtos: document.getElementById('puntos'),
     scoreNivel: document.getElementById('nivel'),
     scoreVidas: document.getElementById('vidas'),
-    contenedorScores: document.getElementById('contenedor2__scores'),
+    botonNewGame: document.getElementById('boton__newGame'),
     contenedorControles: document.getElementById('contenedor2__botonesControl')
 }
 

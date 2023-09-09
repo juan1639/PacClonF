@@ -88,6 +88,7 @@ document.addEventListener('keydown', function(tecla) {
         case 13:
             if (estado.actual == -1) {
                 estado.actual = 0;
+                marcadores.botonNewGame.style.display = 'none';
                 objeto.pacman.valoresIniciales();
 
                 setTimeout(() => {
@@ -95,6 +96,7 @@ document.addEventListener('keydown', function(tecla) {
                 }, constante.pausa_preparado);
 
             } else if (estado.gameover) {
+                marcadores.botonNewGame.style.display = 'none';
                 nuevaPartida();
 
                 setTimeout(() => {
@@ -110,9 +112,10 @@ document.addEventListener('keydown', function(tecla) {
 // ----------------------------------------------------------------------------
 document.addEventListener('click', function(event) {
 
-    if (event.target.id == 'boton__newGame') {
-        if (estado.actual == -1) {
+    if (event.target.id === 'boton__newGame') {
+        if (estado.actual === -1) {
             estado.actual = 0;
+            marcadores.botonNewGame.style.display = 'none';
             objeto.pacman.valoresIniciales();
 
             setTimeout(() => {
@@ -120,6 +123,7 @@ document.addEventListener('click', function(event) {
             }, constante.pausa_preparado);
 
         } else if (estado.gameover) {
+            marcadores.botonNewGame.style.display = 'none';
             nuevaPartida();
 
             setTimeout(() => {
@@ -128,16 +132,16 @@ document.addEventListener('click', function(event) {
         }
     }
 
-    if (event.target.id == 'le') {
+    if (event.target.id === 'boton__le' || event.target.parentElement.id === 'boton__le') {
         objeto.pacman.izquierda();
 
-    } else if (event.target.id == 'ri') {
+    } else if (event.target.id === 'boton__ri' || event.target.parentElement.id === 'boton__ri') {
         objeto.pacman.derecha();
 
-    } else if (event.target.id == 'up') {
+    } else if (event.target.id === 'boton__up' || event.target.parentElement.id === 'boton__up') {
         objeto.pacman.arriba();
 
-    } else if (event.target.id == 'do') {
+    } else if (event.target.id === 'boton__do' || event.target.parentElement.id === 'boton__do') {
         objeto.pacman.abajo();
     } 
 });

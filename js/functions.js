@@ -41,7 +41,8 @@ function dibujarFantasmas() {
                     estado.actual = 4;  // Game Over
                     estado.gameover = true;
                     marcadores.vidas = 0;
-                    marcadores.scoreVidas.innerHTML = `x ${marcadores.vidas}`;
+                    marcadores.scoreVidas.innerHTML = `Vidas: ${marcadores.vidas}`;
+                    marcadores.botonNewGame.style.display = 'flex';
                 }
 
             } else {
