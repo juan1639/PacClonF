@@ -6,4 +6,6 @@ El proyecto consta de:
 - Un archivo style.css
 - Una carpeta js, subdivida en más carpetas con un total de 10 módulos js
 
+<span>![</span><span>Imagen screenshot</span><span>]</span><span>(</span><span>https://raw.githubusercontent.com/juan1639/PacClonF/master/screenShot.png</span><span>)</span>
+
 
