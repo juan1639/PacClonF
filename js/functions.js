@@ -7,7 +7,8 @@ import {
     estadoFantasmas,
     marcadores, 
     objeto, 
-    constante
+    constante,
+    sonidos
 } from './constants.js';
 
 // ----------------------------------------------------------------------------
@@ -23,6 +24,8 @@ function dibujarFantasmas() {
                 estado.actual = 2;  // Secuencia PacMan Dies...
                 estadoFantasmas.azules = false;
                 estadoFantasmas.ptosComeFantasmas = 100;
+                playSonidos(sonidos.pacman_dies);
+                sonidos.pacman_dies.volume = 0.6;
                 marcadores.vidas --;
                 marcadores.scoreVidas.innerHTML = `Vidas: ${marcadores.vidas}`;
 
@@ -43,11 +46,14 @@ function dibujarFantasmas() {
                     marcadores.vidas = 0;
                     marcadores.scoreVidas.innerHTML = `Vidas: ${marcadores.vidas}`;
                     marcadores.botonNewGame.style.display = 'flex';
+                    sonidos.sirena_fondo.loop = false;
+                    playSonidos(sonidos.game_over);
                 }
 
             } else {
                 //console.log('azules');
                 if (!objeto.fantasma[i].comido) {
+                    playSonidos(sonidos.eating_ghost);
                     objeto.fantasma[i].comido = true;
                     objeto.fantasma[i].showPtos = true;
                     objeto.fantasma[i].showX = objeto.fantasma[i].x 
@@ -79,6 +85,8 @@ function dibujaTodosPuntitos() {
                 objeto.puntito[i].visible = false;
                 objeto.contPuntitosComidos ++;
                 marcadores.puntos += objeto.puntito[i].sumaPtos
+                marcadores.scorePtos.innerHTML = `Puntos: ${marcadores.puntos}`;
+                playSonidos(sonidos.wakawaka);
             }
 
             objeto.puntito[i].dibuja();
@@ -92,11 +100,15 @@ function dibujaTodosPuntitos() {
                     objeto.contPuntitosComidos ++;
                     marcadores.puntos += objeto.ptoGordo[i].sumaPtos
                     estadoFantasmas.azules = true;
+                    playSonidos(sonidos.eating_ghost);
+                    playSonidos(sonidos.azules);
+                    sonidos.azules.loop = true;
 
                     setTimeout(() => {
                         estadoFantasmas.azules = false;
                         estadoFantasmas.intermitentes = false;
                         estadoFantasmas.ptosComeFantasmas = 100;
+                        sonidos.azules.loop = false;
 
                         objeto.fantasma.forEach(fant => {
                             fant.comido = false;
@@ -124,6 +136,7 @@ function checkComerFruta() {
         objeto.fruta.showPtos = true;
         objeto.fruta.showX = objeto.fruta.x 
         objeto.fruta.showY = objeto.fruta.y
+        playSonidos(sonidos.eating_cherry);
 
         marcadores.puntos += estadoFantasmas.ptosComeFruta;
 
@@ -248,8 +261,6 @@ function elGameOver() {
 
 // ------------------------------------------------------------------------
 function mostrarMarcadores() {
-    marcadores.scorePtos.innerHTML = `Puntos: ${marcadores.puntos}`;
-
     if (estado.actual == 0) {
 
         const gradi = ctx.createLinearGradient(parseInt(resolucion[0] / 5) + 5, 
@@ -283,6 +294,16 @@ function mostrarMarcadores() {
         ctx.fillStyle = 'orangered';
         ctx.fillText(estadoFantasmas.ptosComeFruta, objeto.fruta.showX, objeto.fruta.showY);
     }
+}
+
+function playSonidos(sonido) {
+    sonido.play();
+}
+
+function playSonidosLoop(sonido, loop, volumen) {
+    sonido.play();
+    sonido.loop = loop;
+    sonido.volume = volumen;
 }
 
 // ------------------------------------------------------------------------
@@ -322,6 +343,7 @@ export {
 	comprobarNivelSuperado, elNivelSuperado,
 	nuevaPartida, elGameOver, mostrarMarcadores,
 	reescalaCanvas, borraCanvas, laPresentacion,
-    nuevaPartidaLocationReload
+    nuevaPartidaLocationReload, playSonidos,
+    playSonidosLoop
 };
 

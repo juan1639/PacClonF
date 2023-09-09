@@ -19,7 +19,8 @@ import {
     marcadores,
     estado, 
     estadoFantasmas, 
-    colores
+    colores,
+    sonidos
 } from './constants.js';
 
 // ----------------------------------------------------------------------------
@@ -38,7 +39,9 @@ import {
     reescalaCanvas, 
     borraCanvas, 
     laPresentacion,
-    nuevaPartidaLocationReload
+    nuevaPartidaLocationReload,
+    playSonidos,
+    playSonidosLoop
 } from './functions.js';
 
 // ----------------------------------------------------------------------------
@@ -63,6 +66,7 @@ import {
 //  Control mediante Teclado
 // ----------------------------------------------------------------------------
 document.addEventListener('keydown', function(tecla) {
+    const volumen_sirenaFondo = 0.1;
     
     switch(tecla.keyCode){
         case 38:
@@ -89,18 +93,22 @@ document.addEventListener('keydown', function(tecla) {
             if (estado.actual == -1) {
                 estado.actual = 0;
                 marcadores.botonNewGame.style.display = 'none';
+                playSonidos(sonidos.preparado);
                 objeto.pacman.valoresIniciales();
 
                 setTimeout(() => {
                     if (estado.actual == 0) estado.actual = 1;
+                    playSonidosLoop(sonidos.sirena_fondo, true, 0.1);
                 }, constante.pausa_preparado);
 
             } else if (estado.gameover) {
                 marcadores.botonNewGame.style.display = 'none';
+                playSonidos(sonidos.preparado);
                 nuevaPartida();
 
                 setTimeout(() => {
                     estado.actual = 1;
+                    playSonidosLoop(sonidos.sirena_fondo, true, 0.1);
                 }, constante.pausa_preparado);
             }
         break;
@@ -111,23 +119,28 @@ document.addEventListener('keydown', function(tecla) {
 //  Control mediante botones
 // ----------------------------------------------------------------------------
 document.addEventListener('click', function(event) {
+    const volumen_sirenaFondo = 0.1;
 
     if (event.target.id === 'boton__newGame') {
         if (estado.actual === -1) {
             estado.actual = 0;
             marcadores.botonNewGame.style.display = 'none';
+            playSonidos(sonidos.preparado);
             objeto.pacman.valoresIniciales();
 
             setTimeout(() => {
                 if (estado.actual == 0) estado.actual = 1;
+                playSonidosLoop(sonidos.sirena_fondo, true, 0.1);
             }, constante.pausa_preparado);
 
         } else if (estado.gameover) {
             marcadores.botonNewGame.style.display = 'none';
+            playSonidos(sonidos.preparado);
             nuevaPartida();
 
             setTimeout(() => {
                 estado.actual = 1;
+                playSonidosLoop(sonidos.sirena_fondo, true, 0.1);
             }, constante.pausa_preparado);
         }
     }
@@ -150,6 +163,9 @@ document.addEventListener('click', function(event) {
 window.onload = () => {
     canvas.width = resolucion[0];
     canvas.height = resolucion[1] - constante.bsy;
+
+    // sonidos.presentacion.play();
+    // sonidos.presentacion.volume = 0.6;
 
     // INSTANCIAR (Laberinto) ----------------------------------------
     objeto.laberinto = new Level(array_laberinto);

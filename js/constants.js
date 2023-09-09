@@ -86,9 +86,22 @@ const colores = {
     rojo: '#D32111'
 }
 
+const sonidos = {
+    preparado: new Audio('./audio/pacmaninicionivel.ogg'),
+    game_over: new Audio('./audio/gameoveretro.ogg'),
+    azules: new Audio('./audio/pacmanazules.ogg'),
+    pacman_dies: new Audio('./audio/pacmandies.ogg'),
+    eating_cherry: new Audio('./audio/pacmaneatingcherry.mp3'),
+    eating_ghost: new Audio('./audio/pacmaneatinghost.ogg'),
+    presentacion: new Audio('./audio/pacmanintermision.ogg'),
+    sirena_fondo: new Audio('./audio/pacmansirena.ogg'),
+    wakawaka: new Audio('./audio/pacmanwakawaka.mp3')
+}
+
 export {
     constante, resolucion, array_laberinto,
     objeto, canvas, ctx, marcadores,
-    estado, estadoFantasmas, colores
+    estado, estadoFantasmas, colores,
+    sonidos
 };
 
