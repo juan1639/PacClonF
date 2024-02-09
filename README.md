@@ -6,5 +6,5 @@ El proyecto consta de:
 - Un archivo style.css
 - Una carpeta js, subdivida en más carpetas con un total de 10 módulos js
 
-<img src"./screenShot.png"/>
+<img src="./screenShot.png"/>
 https://juan1639.github.io/PacClonF
